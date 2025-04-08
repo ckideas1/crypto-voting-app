@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite Coins Voting</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Vote for Your Favorite Coin</h1>
+
+    {% if top_coin %}
+        <h2 style="text-align:center; color: #555;">
+            🏆 Most Popular: <strong>{{ top_coin.coin_name }}</strong> with {{ top_coin.votes }} votes
+        </h2>
+    {% endif %}
+
+    <p style="text-align:center; color: #777;">
+        Total Votes Cast: <strong>{{ total_votes }}</strong>
+    </p>
+
+    <ul>
+        {% for coin in coins %}
+            <li>
+                {{ coin.coin_name }} — {{ coin.votes }} votes
+                <form action="/vote" method="post" style="display:inline;">
+                    <input type="hidden" name="coin_id" value="{{ coin.id }}">
+                    <button type="submit">Vote</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
