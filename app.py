@@ -1,35 +1,30 @@
 from flask import Flask, render_template, request, redirect
-import mysql.connector
+import pymysql
 
 app = Flask(__name__)
 
 def get_db_connection():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",  # Update if needed
-        password="",  # Add your MySQL password if required
-        database="crypto_votes"
+    return pymysql.connect(
+        user='root',
+        password='Itsbryan500!!!',
+        database='cryptodb',
+        unix_socket='/tmp/mysql.sock',
+        cursorclass=pymysql.cursors.DictCursor
     )
 
 @app.route('/')
 def index():
     conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM votes")
     coins = cursor.fetchall()
 
-    # Get total votes
-    total_votes = sum(coin['votes'] for coin in coins)
-
-    # Get most popular coin
-    top_coin = max(coins, key=lambda x: x['votes']) if coins else None
+    total_votes = sum(coin['vote_count'] for coin in coins)
+    top_coin = max(coins, key=lambda x: x['vote_count']) if coins else None
 
     cursor.close()
     conn.close()
-
     return render_template('index.html', coins=coins, total_votes=total_votes, top_coin=top_coin)
-
 
 @app.route('/vote', methods=['POST'])
 def vote():
@@ -37,6 +32,16 @@ def vote():
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("UPDATE votes SET vote_count = vote_count + 1 WHERE id = %s", (coin_id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/')
+
+@app.route('/reset', methods=['POST'])
+def reset():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE votes SET vote_count = 0")
     conn.commit()
     cursor.close()
     conn.close()
