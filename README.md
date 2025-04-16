@@ -1,6 +1,6 @@
 # 🗳️ Crypto Voting App
 
-A clean, full-stack web application that lets users vote for their favorite cryptocurrencies in real time. Built with Flask, MySQL, and a responsive UI — perfect for showcasing beginner-to-intermediate web dev skills and cloud deployment.
+A secure, full-stack web application that lets users vote for their favorite cryptocurrencies in real time. Built using Flask, MySQL, and Jinja2, this project demonstrates secure backend logic, input sanitization, and clean UI styling — ideal for showcasing full-stack fundamentals with security in mind.
 
 ---
 
@@ -10,34 +10,35 @@ A clean, full-stack web application that lets users vote for their favorite cryp
 
 ---
 
-## 🚀 Features
+## 🚦 Features
 
-✅ Vote for 5 major cryptocurrencies  
-✅ Real-time vote count display  
-✅ Highlights the most popular coin  
-✅ Total vote count displayed  
-✅ Styled with responsive, clean UI  
-✅ Powered by Flask + MySQL  
+- ✅ Vote for 5 major cryptocurrencies  
+- 🔄 Real-time vote count display  
+- 🌟 Highlights the most popular coin  
+- 🔒 User input sanitization & secure storage  
+- 🎨 Responsive and clean UI design  
+- ⚙️ Built with Flask + MySQL backend  
 
 ---
 
 ## 🧰 Tech Stack
 
-- Python (Flask)
-- MySQL
-- HTML/CSS (custom)
-- Jinja2 templates
+- Python (Flask)  
+- MySQL  
+- HTML/CSS  
+- Jinja2 templates  
+- Git & GitHub  
 
 ---
 
-## 🛠️ Setup Instructions
+## ⚙️ Setup Instructions
 
 ```bash
 # Clone the repository
-git clone https://github.com/ckideasa1/crypto-voting-app.git
+git clone https://github.com/ckideas1/crypto-voting-app.git
 cd crypto-voting-app
 
-# (Optional) Create a virtual environment
+# (Optional) Create and activate a virtual environment
 python3 -m venv venv
 source venv/bin/activate
 
@@ -49,10 +50,22 @@ python app.py
 
 ---
 
+## 🔮 Future Enhancements
+Add user login & authentication
 
-## 🌟 Future Enhancements
+Integrate session handling and rate limiting
 
-- Add user authentication  
-- Deploy using Docker + Nginx on AWS EC2  
-- Add chart visualization (e.g., bar graph for votes)  
-- Connect to live crypto APIs for trending coins 
+Dockerize app and deploy via Nginx on AWS EC2
+
+Add vote visualizations (e.g., bar charts via Chart.js)
+
+Connect to live crypto APIs (CoinGecko, etc.)
+
+---
+
+🔗 GitHub Repository
+https://github.com/ckideas1/crypto-voting-app
+
+---
+
+`Updated README content and formatting`
